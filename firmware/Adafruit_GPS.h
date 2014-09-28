@@ -83,8 +83,7 @@ class Adafruit_GPS {
  public:
   void begin(uint16_t baud); 
 
-  Adafruit_GPS(Serial2 *ser); // Constructor when using SoftwareSerial
-  Adafruit_GPS(Serial *ser); // Constructor when using HardwareSerial
+  Adafruit_GPS(); // Constructor when using SoftwareSerial
 
   char *lastNMEA(void);
   boolean newNMEAreceived();
@@ -129,8 +128,6 @@ class Adafruit_GPS {
   boolean paused;
   
   uint8_t parseResponse(char *response);
-  Serial2 *gpsSwSerial;
-  Serial *gpsHwSerial;
 };
 
 
