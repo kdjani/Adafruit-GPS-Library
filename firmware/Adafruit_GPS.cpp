@@ -9,7 +9,7 @@ Written by Limor Fried/Ladyada for Adafruit Industries.
 BSD license, check license.txt for more information
 All text above must be included in any redistribution
 ****************************************/
-#include "application.h"
+#include <math.h>
 #include "Adafruit_GPS.h"
 
 // how long are max NMEA lines to parse?
