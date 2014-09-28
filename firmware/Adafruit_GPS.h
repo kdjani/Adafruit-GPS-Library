@@ -21,16 +21,6 @@ All text above must be included in any redistribution
 #ifndef _ADAFRUIT_GPS_H
 #define _ADAFRUIT_GPS_H
 
-#include "application.h"
-
-#ifdef __AVR__
-  #if ARDUINO >= 100
-    #include <SoftwareSerial.h>
-  #else
-    #include <NewSoftSerial.h>
-  #endif
-#endif
-
 
 // different commands to set the update rate from once a second (1 Hz) to 10 times a second (10Hz)
 // Note that these only control the rate at which the position is echoed, to actually speed up the
@@ -87,18 +77,7 @@ All text above must be included in any redistribution
 // how long to wait when we're looking for a response
 #define MAXWAITSENTENCE 5
 
-#if defined (SPARK)
 #include "application.h"
-#else
-#include "Arduino.h"
-#if defined (__AVR__) && !defined(__AVR_ATmega32U4__)
- #include "SoftwareSerial.h"
-#endif
-#else
- #include "WProgram.h"
- #include "NewSoftSerial.h"
-#endif
-
 
 class Adafruit_GPS {
  public:
