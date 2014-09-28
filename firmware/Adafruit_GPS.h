@@ -77,8 +77,6 @@ All text above must be included in any redistribution
 // how long to wait when we're looking for a response
 #define MAXWAITSENTENCE 5
 
-#include "application.h"
-
 class Adafruit_GPS {
  public:
   void begin(uint16_t baud); 
