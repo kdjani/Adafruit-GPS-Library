@@ -10,7 +10,7 @@ BSD license, check license.txt for more information
 All text above must be included in any redistribution
 ****************************************/
 #include "application.h"
-#include "Adafruit_GPS/Adafruit_GPS.h"
+#include "Adafruit_GPS.h"
 
 // how long are max NMEA lines to parse?
 #define MAXLINELENGTH 120
