@@ -9,7 +9,7 @@
 // Pick one up today at the Adafruit electronics shop 
 // and help support open source hardware & software! -ada
 
-#include <Adafruit_GPS.h>
+#include "Adafruit_GPS/Adafruit_GPS.h"
 #if ARDUINO >= 100
  #include <SoftwareSerial.h>
 #else
