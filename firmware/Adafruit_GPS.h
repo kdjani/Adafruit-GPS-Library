@@ -87,8 +87,10 @@ All text above must be included in any redistribution
 // how long to wait when we're looking for a response
 #define MAXWAITSENTENCE 5
 
-#if ARDUINO >= 100
- #include "Arduino.h"
+#if defined (SPARK)
+#include "application.h"
+#else
+#include "Arduino.h"
 #if defined (__AVR__) && !defined(__AVR_ATmega32U4__)
  #include "SoftwareSerial.h"
 #endif
