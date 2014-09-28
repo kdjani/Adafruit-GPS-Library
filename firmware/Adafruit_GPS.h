@@ -22,6 +22,7 @@ All text above must be included in any redistribution
 #define _ADAFRUIT_GPS_H
 
 #include "application.h"
+#include "Serial2/Serial2.h"
 
 // different commands to set the update rate from once a second (1 Hz) to 10 times a second (10Hz)
 // Note that these only control the rate at which the position is echoed, to actually speed up the
@@ -82,14 +83,8 @@ class Adafruit_GPS {
  public:
   void begin(uint16_t baud); 
 
-#ifdef __AVR__
-  #if ARDUINO >= 100 
-    Adafruit_GPS(SoftwareSerial *ser); // Constructor when using SoftwareSerial
-  #else
-    Adafruit_GPS(NewSoftSerial  *ser); // Constructor when using NewSoftSerial
-  #endif
-#endif
-  Adafruit_GPS(HardwareSerial *ser); // Constructor when using HardwareSerial
+  Adafruit_GPS(Serial2 *ser); // Constructor when using SoftwareSerial
+  Adafruit_GPS(Serial *ser); // Constructor when using HardwareSerial
 
   char *lastNMEA(void);
   boolean newNMEAreceived();
@@ -134,14 +129,8 @@ class Adafruit_GPS {
   boolean paused;
   
   uint8_t parseResponse(char *response);
-#ifdef __AVR__
-  #if ARDUINO >= 100
-    SoftwareSerial *gpsSwSerial;
-  #else
-    NewSoftSerial  *gpsSwSerial;
-  #endif
-#endif
-  HardwareSerial *gpsHwSerial;
+  Serial2 *gpsSwSerial;
+  Serial *gpsHwSerial;
 };
 
 
