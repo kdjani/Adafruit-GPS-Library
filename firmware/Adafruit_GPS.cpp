@@ -9,11 +9,8 @@ Written by Limor Fried/Ladyada for Adafruit Industries.
 BSD license, check license.txt for more information
 All text above must be included in any redistribution
 ****************************************/
-#ifdef __AVR__
-  // Only include software serial on AVR platforms (i.e. not on Due).
-  #include <SoftwareSerial.h>
-#endif
-#include "Adafruit_GPS.h"
+#include "application.h"
+#include "Adafruit_GPS/Adafruit_GPS.h"
 
 // how long are max NMEA lines to parse?
 #define MAXLINELENGTH 120
