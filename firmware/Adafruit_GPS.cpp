@@ -15,8 +15,8 @@ All text above must be included in any redistribution
 // how long are max NMEA lines to parse?
 #define MAXLINELENGTH 120
 
-#define gpsHwSerial Serial
-#define gpsSwSerial Serial2
+#define HardwareSerial USBSerial
+#define SoftwareSerial USARTSerial
 
 // we double buffer: read one line in and leave one for the main program
 volatile char line1[MAXLINELENGTH];
@@ -297,13 +297,22 @@ char Adafruit_GPS::read(void) {
 }
 
 // Constructor when using SoftwareSerial or NewSoftSerial
-Adafruit_GPS::Adafruit_GPS()
+Adafruit_GPS::Adafruit_GPS(SoftwareSerial *ser)
 {
   common_init();     // Set everything to common state, then...
+  gpsSwSerial = ser; // ...override gpsSwSerial with value passed.
+}
+
+// Constructor when using HardwareSerial
+Adafruit_GPS::Adafruit_GPS(HardwareSerial *ser) {
+  common_init();  // Set everything to common state, then...
+  gpsHwSerial = ser; // ...override gpsHwSerial with value passed.
 }
 
 // Initialization code used by all constructor types
 void Adafruit_GPS::common_init(void) {
+  gpsSwSerial = NULL; // Set both to NULL, then override correct
+  gpsHwSerial = NULL; // port pointer in corresponding constructor
   recvdflag   = false;
   paused      = false;
   lineidx     = 0;
